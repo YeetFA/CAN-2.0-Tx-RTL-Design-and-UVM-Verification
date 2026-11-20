@@ -1,6 +1,8 @@
-cat << 'EOF' > .gitignore
 # External UVM library (cloned/downloaded separately)
 uvm-verilator/
+
+# Testbenches for Pre-UVM Development
+tb/
 
 # Verilator build & simulation outputs
 obj_dir/

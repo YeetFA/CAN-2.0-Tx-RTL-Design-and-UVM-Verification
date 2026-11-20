@@ -60,9 +60,28 @@ module can_tb_top;
             vif.i_can_bit_tick <= 1'b0;
         end
     end
+    
+    // -------------------------------------------------------------------------
+    // Clock-Sampled Trace Shadows (Forces Verilator VCD to dump virtual-if writes)
+    // -------------------------------------------------------------------------
+    logic        tb_rst_p;
+    logic [63:0] tb_can_data;
+    logic [10:0] tb_can_id;
+    logic [3:0]  tb_can_dlc;
+    logic        tb_can_start;
+    logic        tb_can_rx;
+
+    always_ff @(posedge i_clk or negedge i_clk) begin
+        tb_rst_p     <= vif.i_rst_p;
+        tb_can_data  <= vif.i_can_data;
+        tb_can_id    <= vif.i_can_id;
+        tb_can_dlc   <= vif.i_can_dlc;
+        tb_can_start <= vif.i_can_start;
+        tb_can_rx    <= vif.i_can_rx;
+    end
 
     // -------------------------------------------------------------------------
-    // DUT Instantiation
+    // DUT Instantiation (Connected directly to vif for zero-latency timing)
     // -------------------------------------------------------------------------
     can_tx_top dut (
         .i_clk           (i_clk),

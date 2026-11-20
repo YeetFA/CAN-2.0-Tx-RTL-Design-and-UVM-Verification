@@ -30,7 +30,7 @@ UVM_FLAGS   = +UVM_TESTNAME=$(TEST) \
               $(EXTRA_ARGS)
 
 # Base Verilator compile flags
-VFLAGS      = --binary -j 0 --timing --trace -DUVM_NO_DPI \
+VFLAGS      = --binary -j 0 --timing --trace --trace-structs -DUVM_NO_DPI \
               -Wno-WIDTHTRUNC -Wno-WIDTHEXPAND -Wno-IGNOREDRETURN \
               -Wno-CONSTRAINTIGN -Wno-TIMESCALEMOD \
               +incdir+$(UVM_HOME) \
