@@ -1,0 +1,21 @@
+cat << 'EOF' > .gitignore
+# External UVM library (cloned/downloaded separately)
+uvm-verilator/
+
+# Verilator build & simulation outputs
+obj_dir/
+*.vcd
+*.fst
+
+# Coverage artifacts
+logs/
+cov_html/
+coverage.dat
+*.info
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+EOF
